@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>AmmoCannonball</defName>
+      <label>Cannonball ammo</label>
+      <parent>AmmoOrc</parent>
+      <iconPath>UI/Icons/ThingCategories/CaliberCharge</iconPath>
+    </ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_Cannonball</defName>
+    <label>Cannonball ammo</label>
+    <ammoTypes>
+      <Ammo_Cannonball>Bullet_Cannonball</Ammo_Cannonball>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+  <ThingDef Name="CannonballBase" ParentName="AmmoBase" Abstract="True">
+    <description>Cannonball</description>
+    <statBases>
+	  <Mass>0.08</Mass>
+	  <Bulk>0.06</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>AmmoCannonball</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="CannonballBase">
+    <defName>Ammo_Cannonball</defName>
+    <label>Cannonball</label>
+    <graphicData>
+      <texPath>Things/Ammo/Mortar</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2</MarketValue>
+    </statBases>
+    <ammoClass>RocketFrag</ammoClass>
+	<comps>
+      <li Class="CombatExtended.CompProperties_ExplosiveCE">
+        <explosionDamage>20</explosionDamage>
+        <explosionDamageDef>Bomb</explosionDamageDef>
+        <explosionRadius>3</explosionRadius>
+        <fragments>
+          <Fragment_RocketFrag>20</Fragment_RocketFrag>
+        </fragments>
+        <soundExplode>MortarBomb_Explode</soundExplode>
+      </li>
+    </comps>
+  </ThingDef>
+	
+	<!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="BaseCannonball" ParentName="BaseBullet" Abstract="true">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Cannonball</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+	  <explosionRadius>3.0</explosionRadius>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseCannonball">
+    <defName>Bullet_Cannonball</defName>
+    <label>Cannonball</label>
+	<projectile>
+		<explosionRadius>3</explosionRadius>
+		<damageDef>Bomb</damageDef>
+		<damageAmountBase>20</damageAmountBase>
+	</projectile>
+	<comps>
+		<li Class="CombatExtended.CompProperties_ExplosiveCE">
+			<fragRange>3</fragRange>
+			<fragments>
+      <Fragment_RocketFrag>20</Fragment_RocketFrag>
+			</fragments>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</li>
+	</comps>
+  </ThingDef>
+	
+</Defs>
