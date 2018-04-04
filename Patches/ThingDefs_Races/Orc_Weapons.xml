@@ -43,6 +43,23 @@
   </Operation>
   
 	<Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="Gun_HandCannon"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>barrel</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>17</power>
+					<cooldownTime>1.9</cooldownTime>
+					<armorPenetration>0.1</armorPenetration>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+  
+	<Operation Class="PatchOperationReplace">
 		<xpath>*/ThingDef[defName="MeleeWeapon_GreatMaul"]/tools</xpath>
 		<value>
 			<tools>
